@@ -1,0 +1,48 @@
+@using Microsoft.AspNetCore.Identity
+@using soppi.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@model List<soppi.Models.ViewModel.ProductViewModel>
+
+<head>
+    <link rel="stylesheet" href="~/Content/css/Shop/Product/Index.css">
+</head>
+<div class="container-fluid">
+    <div class="d-flex justify-content-end my-3"><a class="btn btn-secondary text-light" asp-action="Add" asp-controller="Product">+ Add</a></div>
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            <div class="col-lg-4">
+                <a class="text-decoration-none text-dark" asp-action="Detail" asp-controller="Product" asp-rout-id="@p.Id">
+                    <div class="mx-lg-1 d-flex bg-white my-lg-2 product-container flex-column flex-sm-row flex-md-row">
+                        <div class="img-outer">
+                            <img class="product-img img-fluid" src="@p.Image" alt="@p.ProductName" />
+                        </div>
+                        <div>
+                            <div class="info p-4">
+                                <div class="product-name">@p.ProductName</div>
+                                <div class="price" data-price="@p.Price">@p.Price</div>
+                                <div class="description">@p.Description</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Lặp qua mỗi phần tử có class là "price"
+        $('.price').each(function () {
+            // Lấy giá trị số từ thuộc tính data-price
+            var price = parseFloat($(this).data('price'));
+            // Định dạng lại số với dấu phẩy
+            var formattedPrice = price.toLocaleString();
+            // Gán lại văn bản đã định dạng vào phần tử
+            $(this).text(formattedPrice + " đ");
+        });
+    });
+</script>

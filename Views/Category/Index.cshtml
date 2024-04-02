@@ -1,0 +1,23 @@
+@model List<soppi.Models.Category>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var category in Model){
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.CategoryName</td>
+                    <td>
+                        <a asp-route-id="@category.Id" asp-action="Detail" class="btn btn-primary">Detail</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

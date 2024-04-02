@@ -1,0 +1,65 @@
+@model soppi.Models.SignIn;
+@{
+    ViewBag.Title = "SignIn";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="~/Content/css/Account/SignIn.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row wrapper">
+            <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-start px-xl-5 flex-column align-items-lg-end">
+                <div class="logo-container">
+                    <img src="~/logo.png" class="img-fluid logo" alt="SignIn">
+                </div>
+                <div class="float-start">
+                    <p class="slogan">Hãy mua tất cả những gì bạn thích</p>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-7 col-12">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-8 card p-5 shadow form-outer">
+                        <h2 class="font-weight-bold">Đăng nhập</h2>
+                        <form asp-controller="Account" asp-action="SignIn" method="post">
+                            <div asp-validation-summary="ModelOnly"></div>
+                            <div class="my-3">
+                                <input class="form-control" type="text" asp-for="UserName" placeholder="Email">
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                            <div class="my-3">
+                                <input class="form-control" type="password" asp-for="Password" placeholder="Mật khẩu">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="mb-1 form-check">
+                                <div></div>
+                                <label class="form-check-label">
+                                    <input asp-for="RememberMe" type="checkbox" class="form-check-input">
+                                    <span>Ghi nhớ đăng nhập</span>
+                                </label>
+                            </div>
+                            <hr class="my-4">
+                            <div class="row">
+                                <div class="col-7">
+                                    <a asp-action="SignUp" class="text-decoration-none text-primary float-start mt-2">Tạo tài khoản</a>
+                                </div>
+                                <div class="col-5">
+                                    <button type="submit" class="btn btn-primary float-end btn-sm">Đăng nhập</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

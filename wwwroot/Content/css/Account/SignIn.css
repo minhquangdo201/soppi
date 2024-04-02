@@ -1,0 +1,29 @@
+body {
+    background-color: #F0F2F5!important;
+}
+.wrapper {
+    padding-top: 10rem!important;
+}
+
+
+.logo-container {
+    width: 24rem; /* Đặt chiều rộng tùy ý */
+    overflow: hidden; /* Đảm bảo ảnh không vượt ra khỏi khung */
+  }
+  
+  .logo-container img {
+    width: 100%; /* Đảm bảo ảnh sẽ đầy đủ chiều rộng trong khung */
+    height: auto; /* Giữ tỷ lệ khung hình */
+    display: block; /* Loại bỏ khoảng trắng dư thừa ở dưới ảnh */
+  }
+
+.slogan {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.form-outer {
+    border-radius: 8px!important;
+}

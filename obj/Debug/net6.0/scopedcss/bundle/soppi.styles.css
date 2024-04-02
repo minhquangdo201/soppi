@@ -1,0 +1,119 @@
+/* _content/soppi/Areas/Admin/Views/Shared/_AdminLayout.cshtml.rz.scp.css */
+#btnTop[b-jn0r4vdwma] {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+/* _content/soppi/Areas/Shop/Views/Shared/_ShopLayout.cshtml.rz.scp.css */
+#btnTop[b-4s1nhl68fk] {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgb(255, 100, 100, 0.1);
+  }
+/* _content/soppi/Views/Product/Index.cshtml.rz.scp.css */
+.product-container[b-0wuicbjl8r] {
+}
+
+.product-outer[b-0wuicbjl8r] {
+    background-color: white;
+    height: 24rem;
+    transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.product-outer:hover[b-0wuicbjl8r] {
+    transform: translateY(-8px); /* Di chuyển sản phẩm lên trên */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Hiển thị bóng đổ */
+}
+
+.product-image[b-0wuicbjl8r] {
+    height: 16rem; /* Chiều cao cố định cho hình ảnh */
+    overflow: hidden; /* Ẩn phần của hình ảnh vượt ra khỏi phạm vi */
+    margin-bottom: 10px; /* Khoảng cách giữa các sản phẩm */
+    
+}
+
+.product-image img[b-0wuicbjl8r] {
+    width: 100%; /* Đảm bảo hình ảnh lấp đầy kích thước của thẻ cha */
+    height: auto;
+    object-fit: cover; /* Đảm bảo hình ảnh không bị bóp méo */
+}
+
+.product-details[b-0wuicbjl8r] {
+    text-align: center;
+}
+
+.product-name[b-0wuicbjl8r] {
+    font-weight: bold;
+    margin-bottom: 5px;
+    overflow: hidden; /* Ẩn bớt phần vượt ra ngoài */
+    white-space: nowrap; /* Ngăn không cho văn bản xuống dòng */
+    text-overflow: ellipsis;
+}
+
+.product-price[b-0wuicbjl8r] {
+    color: green;
+    font-size: 1.2em;
+}
+/* _content/soppi/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-aefl8vcahz] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-aefl8vcahz] {
+  color: #0077cc;
+}
+
+.btn-primary[b-aefl8vcahz] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-aefl8vcahz], .nav-pills .show > .nav-link[b-aefl8vcahz] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-aefl8vcahz] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-aefl8vcahz] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-aefl8vcahz] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-aefl8vcahz] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.logo-container[b-aefl8vcahz] {
+  height: 40px; /* Đặt chiều cao của thẻ chứa */
+  padding-top: 0!important; /* Xóa padding top */
+}
+
+.logo[b-aefl8vcahz]{
+  width: 50px;
+  height: 20px;
+}
+
+.button-logout[b-aefl8vcahz] {
+  max-width: 7rem!important;
+}
+
+#btnTop[b-aefl8vcahz] {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(255, 100, 100, 0.1);
+}

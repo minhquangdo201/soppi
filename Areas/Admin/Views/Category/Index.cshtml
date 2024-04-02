@@ -1,0 +1,20 @@
+@model List<soppi.Models.Category>;
+
+<a class="btn btn-primary" asp-area="Admin" asp-action="Add" asp-controller="Category">Thêm danh mục</a>
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Tên danh mục</th>
+        <th>Thao tác</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.CategoryName</td>
+            <td>
+                <button class="btn btn-warning" asp-area="Admin" asp-controller="Category" asp-action="Detail">Chi tiết</button>
+            </td>
+        </tr>
+    }
+</table>

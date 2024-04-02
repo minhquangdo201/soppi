@@ -1,0 +1,64 @@
+@model soppi.Models.SignUp;
+
+@{
+    ViewBag.Title = "SignUp";
+    Layout = null;
+}
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/Account/SignUp.css">
+</head>
+<div class="d-flex justify-content-center align-item-center mt-lg-0 mt-md-5">
+    <div class="col-md-7 col-lg-4 card form-outer shadow mt-md-5">
+        <div class="px-5 my-3">
+            <h2 class="font-weight-bold">Đăng ký</h2>
+            <span class="slogan">Nhanh chóng và dễ dàng</span>
+        </div>
+        <form method="post" asp-action="SignUp" class="border-top">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="mb-1 px-5 my-3">
+                <input class="form-control" asp-for="UserName" placeholder="Tên đăng nhập" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="mb-1 px-5 my-3 d-flex row">
+                <div class="col-lg-6 col-md-6">
+                    <input type="password" class="form-control" asp-for="Password" placeholder="Mật khẩu" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <input type="password" class="form-control" asp-for="ConfirmPassword"
+                        placeholder="Nhập lại mật khẩu" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-1 px-5 my-3">
+                <input class="form-control" asp-for="Name" placeholder="Họ và tên" />
+            </div>
+            <div class="mb-1 px-5 my-3">
+                <input class="form-control" asp-for="Address" placeholder="Địa chỉ" />
+            </div>
+            <div class="mb-1 px-5 my-3">
+                <input class="form-control" asp-for="Email" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-1 px-5 my-3 row">
+                <div class="col-6">
+                    <input class="form-control" asp-for="PhoneNumber" placeholder="Số điện thoại" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="col-6">
+                    <select class="form-select" asp-for="Role">
+                        <option value="Shop">Người bán hàng</option>
+                        <option selected value="User">Người mua hàng </option>
+                        <option value="Admin">Quản trị viên</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success my-2 px4">Tạo tài khoản</button>
+            </div>
+        </form>
+    </div>
+</div>

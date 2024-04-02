@@ -1,0 +1,54 @@
+@model soppi.Models.ViewModel.AccountViewModel
+
+<form method="post">
+    <div class="mb-3 d-none">
+        <input type="text" class="form-control" asp-for="Id" value="@Model.Id">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Tên đăng nhập</label>
+        <input type="text" class="form-control" asp-for="UserName" value="@Model.UserName">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Họ và tên</label>
+        <input type="text" class="form-control" asp-for="Name" value="@Model.Name">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Địa chỉ</label>
+        <input type="text" class="form-control" asp-for="Address" value="@Model.Address">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Email</label>
+        <input type="email" class="form-control" asp-for="Email" value="@Model.Email">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Phone</label>
+        <input type="text" class="form-control" asp-for="PhoneNumber" value="@Model.PhoneNumber">
+    </div>
+    <div class="mb-3">
+        <label for="">Quyền</label>
+        <select class="form-select" aria-label="Default select example" asp-for="@Model.Role">
+            @if (Model.Role == "Admin")
+            {
+
+                <option value="Admin" selected>Quản trị viên</option>
+                <option value="User">Người mua hàng</option>
+                <option value="Shop">Người bán hàng</option>
+            }
+            else if (Model.Role == "Shop")
+            {
+                <option value="Admin">Quản trị viên</option>
+                <option value="User">Người mua hàng</option>
+                <option value="Shop" selected>Người bán hàng</option>
+            }
+            else
+            {
+                <option value="Admin">Quản trị viên</option>
+                <option value="User" selected>Người mua hàng</option>
+                <option value="Shop">Người bán hàng</option>
+            }
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit" asp-area="Admin" asp-controller="Account"
+        asp-action="Update">Lưu</button>
+    <a class="btn btn-primary" asp-area="Admin" asp-action="Index" asp-controller="Account">Hủy</a>
+</form>

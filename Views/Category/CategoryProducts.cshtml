@@ -1,0 +1,43 @@
+@model List<soppi.Models.ViewModel.ProductViewModel>
+
+<head>
+    <link rel="stylesheet" href="~/Content/css/Home/Index.css">
+</head>
+<div>
+    <div class="row mx-xl-5 my-3">
+        @foreach (var p in Model)
+        {
+            <div class="col-lg-2 col-md-4 col-6 my-1 rounded-3">
+                <a class="text-decoration-none text-dark" asp-route-id="@p.Id" asp-controller="Product" asp-action="Detail">
+                    <div class="product-outer">
+                        <div class="product-image">
+                            <img src="@p.Image" alt="Product Image">
+                        </div>
+                        <div class="product-details m-2">
+                            <div class="product-name">@p.ProductName</div>
+                            <div class="d-flex justify-content-between">
+                                <div class="product-price price" data-price="@p.Price">@p.Price</div>
+                                <div class="quantity">Số lượng: @p.StockQuantity</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Lặp qua mỗi phần tử có class là "price"
+        $('.price').each(function () {
+            // Lấy giá trị số từ thuộc tính data-price
+            var price = parseFloat($(this).data('price'));
+            // Định dạng lại số với dấu phẩy
+            var formattedPrice = price.toLocaleString();
+            // Gán lại văn bản đã định dạng vào phần tử
+            $(this).text(formattedPrice + " đ");
+        });
+    });
+</script>

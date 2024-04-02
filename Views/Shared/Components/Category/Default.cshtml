@@ -1,0 +1,16 @@
+@model IEnumerable<soppi.Models.Category>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Danh mục
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        @foreach (Category cat in Model)
+        {
+            <li><a class="dropdown-item" asp-controller="Category" asp-action="CategoryProducts"
+                    asp-route-id="@cat.Id">@cat.CategoryName</a>
+            </li>
+        }
+    </ul>
+</li>

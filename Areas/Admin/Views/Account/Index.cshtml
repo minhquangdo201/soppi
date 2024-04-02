@@ -1,0 +1,43 @@
+@model List<soppi.Models.ViewModel.AccountViewModel>
+
+
+<table class="table table-hover"">
+  <thead>
+    <tr>
+    <th scope="col">Tên đăng nhập</th>
+    <th scope="col">Tên</th>
+    <th scope="col">Địa chỉ</th>
+    <th scope="col">Email</th>
+    <th scope="col">Số điện thoại</th>
+    <th scope="col">Quyền</th>
+    <th scope="col">Thao tác</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+{
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Name</td>
+                <td>@user.Address</td>
+                <td>@user.Email</td>
+                <td>@user.PhoneNumber</td>
+                @{
+                    if (user.Role == "Admin")
+                    {
+                        <td>Quản trị viên</td>
+                    }
+                    else if(user.Role == "Shop"){
+                        <td>Người bán hàng</td>
+                    }
+                    else
+                    {
+                        <td>Người mua hàng</td>
+                    }
+                }
+                <td>
+                    <a href="/Admin/Account/Detail/@user.Id" class="btn btn-primary">Sửa</a>
+                </td>
+            </tr>
+}
+</table>
