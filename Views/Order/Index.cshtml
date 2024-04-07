@@ -1,1 +1,78 @@
-<div>order</div>
+@model List<soppi.Models.Order>;
+
+<head>
+    <link rel="stylesheet" href="~/Content/css/Order/Index.css">
+</head>
+<div class="container-fluid">
+    @if (Model.Count == 0)
+    {
+        <div>
+            <h4 class="text-center mt-4">Bạn chưa có đơn hàng nào</h4>
+        </div>
+    }
+    else
+    {
+        <div class="row my-4 outer">
+            @foreach (var o in Model)
+            {
+                <div class="col-lg-12 bg-white my-2 item order-outer">
+                    <div class="row">
+                        <div class="img-outer col-4">
+                            <img src="@o.Product.Image" alt="">
+                        </div>
+                        <div class="info-outer d-flex justify-content-between col-8 mx-4 py-4">
+                            <div class="order-info">
+                                <div><strong>@o.Product.ProductName</strong></div>
+                                <div>Số lượng: @o.Quantity</div>
+                                <div class="total-price" data-price="@o.TotalPrice">Thành tiền: @o.TotalPrice</div>
+                                <div>Trạng thái: @o.Status</div>
+                            </div>
+                            <div class="shop-info">
+                                <div>
+                                    <div><strong>@o.Product.User.Name</strong></div>
+                                    <div>@o.Product.User.Address</div>
+                                </div>
+                                <div>
+                                    <form asp-action="Delete" asp-controller="Order" asp-route-id="@o.Id">
+                                        <input class="d-none" type="text" name="" id="" value="@o.Id">
+                                        <button type="submit" class="btn btn-danger">Hủy đơn</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Lặp qua mỗi phần tử có class là "price"
+        $('.total-price').each(function () {
+            // Lấy giá trị số từ thuộc tính data-price
+            var price = parseFloat($(this).data('price'));
+            // Định dạng lại số với dấu phẩy
+            var formattedPrice = price.toLocaleString();
+            // Gán lại văn bản đã định dạng vào phần tử
+            $(this).text(formattedPrice + " đ");
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Lắng nghe sự kiện click trên nút mở modal
+        $('[data-bs-toggle="modal"]').click(function () {
+            // Lấy giá trị orderId từ thuộc tính data
+            var orderId = $(this).data('order-id');
+            // Đặt giá trị orderId vào input ẩn trong form xác nhận
+            $('#orderIdInput').val(orderId);
+        });
+
+        // Đoạn mã JS khác nếu cần
+    });
+</script>

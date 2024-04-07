@@ -6,22 +6,26 @@
 <head>
     <link rel="stylesheet" href="~/Content/css/Shop/Product/Index.css">
 </head>
-<div class="container-fluid">
-    <div class="d-flex justify-content-end my-3"><a class="btn btn-secondary text-light" asp-action="Add" asp-controller="Product">+ Add</a></div>
+<div class="container-fluid mb-lg-5">
+    <div class="d-flex justify-content-end my-3"><a class="btn btn-secondary text-light" asp-action="Add"
+            asp-controller="Product">+ Add</a></div>
     <div class="row">
         @foreach (var p in Model)
         {
-            <div class="col-lg-4">
-                <a class="text-decoration-none text-dark" asp-action="Detail" asp-controller="Product" asp-rout-id="@p.Id">
-                    <div class="mx-lg-1 d-flex bg-white my-lg-2 product-container flex-column flex-sm-row flex-md-row">
-                        <div class="img-outer">
+            <div class="col-lg-6 my-3">
+                <a class="text-decoration-none text-dark" asp-action="Detail" asp-controller="Product" asp-route-id="@p.Id">
+                    <div class="mx-lg-1 bg-white product-container row">
+                        <div class="col-6">
                             <img class="product-img img-fluid" src="@p.Image" alt="@p.ProductName" />
                         </div>
-                        <div>
+                        <div class="col-6">
                             <div class="info p-4">
                                 <div class="product-name">@p.ProductName</div>
                                 <div class="price" data-price="@p.Price">@p.Price</div>
-                                <div class="description">@p.Description</div>
+                                <div>Số lượng: @p.StockQuantity</div>
+                                <div class="description-container">
+                                    <div class="description">@p.Description</div>
+                                </div>
                             </div>
                         </div>
                     </div>

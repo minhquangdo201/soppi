@@ -4,6 +4,7 @@ using soppi.Models;
 using soppi.Data;
 using soppi.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace soppi.Services;
 public class ProductService : IProductService
@@ -121,6 +122,43 @@ public class ProductService : IProductService
         await _context.SaveChangesAsync();
 
         return product;
+    }
+
+    public async Task<IActionResult> DeleteProduct(Guid id)
+    {
+        var product = await _context.Products.FindAsync(id);
+        if (product == null)
+        {
+            throw new Exception("Product not found!");
+        }
+        _context.Products.Remove(product);
+        await _context.SaveChangesAsync();
+        return new OkResult();
+    }
+
+    public async Task<IActionResult> UpdateProduct(ProductViewModel productViewModel)
+    {
+        var product = await _context.Products.FindAsync(productViewModel.Id);
+        if (product == null)
+        {
+            throw new Exception("Product not found!");
+        }
+
+        var category = await _context.Categories.FirstOrDefaultAsync(c => c.CategoryName == productViewModel.CategoryName);
+        if (category == null)
+        {
+            throw new Exception(productViewModel.CategoryName + " not found!");
+        }
+
+        product.ProductName = productViewModel.ProductName;
+        product.Category = category;
+        product.Price = productViewModel.Price;
+        product.StockQuantity = productViewModel.StockQuantity;
+        product.Description = productViewModel.Description;
+        product.Image = productViewModel.Image;
+
+        await _context.SaveChangesAsync();
+        return new OkResult();
     }
 }
 

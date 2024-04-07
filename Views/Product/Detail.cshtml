@@ -27,12 +27,11 @@
                 <div class="d-flex my-2">
                     <label for="quantity">Số lượng:</label>
                     <div class="d-flex ps-2 me-2">
-                        <input class="quantity form-control" type="number" min="0">
+                        <input class="quantity form-control" type="number" asp-for="@Model.Quantity">
                     </div>
                     <span class="text-secondary" ms-2>Sản phẩm còn lại: @(p.StockQuantity)</span>
                 </div>
                 <div>
-                    <a class="btn btn-outline-info btn-action">Thêm vào giỏ hàng</a>
                     <a class="btn btn-info text-light btn-action" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">Mua ngay</a>
                 </div>
@@ -45,28 +44,31 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận đặt hàng</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="post">
-                    <div>
+                    <div class="d-none">
                         <label for="">UserId</label>
                         <input type="text" class="form-control" asp-for="@Model.UserId"
                             value="@signInManager.UserManager.GetUserId(User)">
                     </div>
-                    <div>
+                    <div class="d-none">
                         <label for="">ProductId</label>
                         <input type="text" class="form-control" asp-for="@Model.ProductId" value="@p.Id">
                     </div>
-                    <div>
+                    <div class="my-2 d-none">
                         <label for="">Số lượng</label>
-                        <input type="text" name="Quantity" class="form-control" asp-for="@Model.Quantity">
+                        <input type="number" name="Quantity" class="form-control" asp-for="@Model.Quantity">
                     </div>
-                    <button type="sumbit" class="btn btn-primary" asp-action="Add"
-                        asp-controller="Order">Save
-                        changes</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="my-2">
+                        <label for="">Tổng tiền</label>
+                        <input type="text" disabled class="form-control" id="total-price">
+                    </div>
+                    <button type="sumbit" class="my-2 btn btn-primary" asp-action="Add" asp-controller="Order">Xác nhận
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
                 </form>
             </div>
 
@@ -121,6 +123,23 @@
             var quantityValue = $(this).val();
             // Cập nhật giá trị số lượng trong modal
             $('.modal-body .form-control[name="Quantity"]').val(quantityValue);
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Lắng nghe sự kiện khi input số lượng thay đổi
+        $('.quantity').on('input', function () {
+            var quantity = parseInt($(this).val());
+            var price = parseFloat($('.price').data('price'));
+            var totalPrice = quantity * price; // Tính toán tổng tiền
+
+            // Định dạng tổng tiền có dấu phẩy
+            var formattedPrice = totalPrice.toLocaleString();
+
+            // Cập nhật giá trị tổng tiền vào ô input tương ứng
+            $('#total-price').val(formattedPrice);
         });
     });
 </script>

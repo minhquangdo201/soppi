@@ -111,14 +111,24 @@ public class AccountService : IAccountService
     public async Task<IActionResult> UpdateUser(AccountViewModel model)
     {
         var user = await _userManager.FindByIdAsync(model.Id);
-        user.UserName = model.UserName;
-        user.Name = model.Name;
-        user.Address = model.Address;
-        user.Email = model.Email;
-        user.PhoneNumber = model.PhoneNumber;
-        await _userManager.UpdateAsync(user);
-        await _userManager.RemoveFromRoleAsync(user, model.Role);
-        await _userManager.AddToRoleAsync(user, model.Role);
-        return new OkResult();
+        var exists = await _userManager.FindByNameAsync(model.UserName);
+        if (user == null)
+        {
+            return new BadRequestResult();
+        }
+        if (exists == null)
+        {
+            user.UserName = model.UserName;
+            user.Name = model.Name;
+            user.Address = model.Address;
+            user.Email = model.Email;
+            user.PhoneNumber = model.PhoneNumber;
+            await _userManager.UpdateAsync(user);
+            await _userManager.RemoveFromRoleAsync(user, model.Role);
+            await _userManager.AddToRoleAsync(user, model.Role);
+            return new OkResult();
+        }
+        return new BadRequestResult();
+
     }
 }

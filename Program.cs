@@ -1,3 +1,4 @@
+using AspNetCoreHero.ToastNotification;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using soppi.Data;
@@ -21,7 +22,12 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
 
     }
 ).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
-
+builder.Services.AddNotyf(config =>
+{
+    config.DurationInSeconds = 10;
+    config.IsDismissable = true;
+    config.Position = NotyfPosition.TopRight;
+});
 
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();

@@ -11,7 +11,7 @@ using soppi.Data;
 namespace soppi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240401074652_InitialDb")]
+    [Migration("20240407103540_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,21 +49,21 @@ namespace soppi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a7b36e24-4e93-40cd-85c6-a9faf4d05750",
+                            Id = "1",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "dd0e4dba-334e-42b3-8164-27c18d731e64",
+                            Id = "2",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "01e44a44-f4e7-4ecc-9616-796eff83c8b5",
+                            Id = "3",
                             ConcurrencyStamp = "3",
                             Name = "Shop",
                             NormalizedName = "Shop"
@@ -151,6 +151,33 @@ namespace soppi.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "1"
+                        },
+                        new
+                        {
+                            UserId = "2",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "3",
+                            RoleId = "3"
+                        },
+                        new
+                        {
+                            UserId = "4",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "5",
+                            RoleId = "3"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -244,6 +271,101 @@ namespace soppi.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            Address = "Hanoi",
+                            ConcurrencyStamp = "09869180-1fa5-4a72-b953-48e68b2e208b",
+                            Email = "admin@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Admin",
+                            NormalizedEmail = "ADMINH@GMAIL.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHn6i7q4opL3JkEVImtcelsYSCQgn4OhgzPNAql4l//cgWx7IiMS4UWDKgyHwMvREw==",
+                            PhoneNumber = "0123456789",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7d6c316b-b562-42e3-b916-64a2e688f205",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            Address = "Hanoi",
+                            ConcurrencyStamp = "0386dbc9-3732-4f3e-95fb-b07128fa9294",
+                            Email = "user@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "User",
+                            NormalizedEmail = "USER@GMAIL.COM",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAEAACcQAAAAELewj106+us1sE0pW1HjYesK83D0dqoye8hJiP3SJ/303VfbBONtYcUCqXs+7l76hA==",
+                            PhoneNumber = "0123456789",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "71d64a7f-9828-4e84-92be-90e8082c37d6",
+                            TwoFactorEnabled = false,
+                            UserName = "user"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AccessFailedCount = 0,
+                            Address = "Hanoi",
+                            ConcurrencyStamp = "fe0c8036-65b7-460f-bfc8-71f4de31cf8e",
+                            Email = "user1@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "User1",
+                            NormalizedEmail = "USER1@GMAIL.COM",
+                            NormalizedUserName = "USER1",
+                            PhoneNumber = "0123456789",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "5e1c7628-8528-46a4-8a1e-88267c6f6ef0",
+                            TwoFactorEnabled = false,
+                            UserName = "user1"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            Address = "Hanoi",
+                            ConcurrencyStamp = "2c30d859-a193-47c7-a95d-0555b2c6c9ba",
+                            Email = "shop@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Shop",
+                            NormalizedEmail = "SHOP@GMAIL.COM",
+                            NormalizedUserName = "SHOP",
+                            PasswordHash = "AQAAAAEAACcQAAAAEInXi18vn9szkXgXdICyHzu1VQ3pAaR9qwmDwVetZRUw9r1/A6uht17XrUQSW5u0Fw==",
+                            PhoneNumber = "0123456789",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e791e9d2-3c27-469f-99b8-25060af18816",
+                            TwoFactorEnabled = false,
+                            UserName = "shop"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            AccessFailedCount = 0,
+                            Address = "Hanoi",
+                            ConcurrencyStamp = "55e41889-8273-487a-8dd2-c06d0cbcd984",
+                            Email = "shop1@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Shop1",
+                            NormalizedEmail = "SHOP1@GMAIL.COM",
+                            NormalizedUserName = "SHOP1",
+                            PhoneNumber = "0123456789",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "0e51c28d-017e-4d81-9fa3-51ea2b7a9235",
+                            TwoFactorEnabled = false,
+                            UserName = "shop1"
+                        });
                 });
 
             modelBuilder.Entity("soppi.Models.Category", b =>
@@ -259,6 +381,44 @@ namespace soppi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("soppi.Models.Order", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ShippingAddress")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("TotalPrice")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("soppi.Models.Product", b =>
@@ -374,6 +534,23 @@ namespace soppi.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("soppi.Models.Order", b =>
+                {
+                    b.HasOne("soppi.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("soppi.Data.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("soppi.Models.Product", b =>

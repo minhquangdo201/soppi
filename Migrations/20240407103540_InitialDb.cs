@@ -248,6 +248,39 @@ namespace soppi.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    OrderDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ShippingAddress = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    TotalPrice = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ProductId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Orders_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Reviews",
                 columns: table => new
                 {
@@ -273,17 +306,36 @@ namespace soppi.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "01e44a44-f4e7-4ecc-9616-796eff83c8b5", "3", "Shop", "Shop" });
+                values: new object[,]
+                {
+                    { "1", "1", "Admin", "Admin" },
+                    { "2", "2", "User", "User" },
+                    { "3", "3", "Shop", "Shop" }
+                });
 
             migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "a7b36e24-4e93-40cd-85c6-a9faf4d05750", "1", "Admin", "Admin" });
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "1", 0, "Hanoi", "09869180-1fa5-4a72-b953-48e68b2e208b", "admin@gmail.com", false, false, null, "Admin", "ADMINH@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEHn6i7q4opL3JkEVImtcelsYSCQgn4OhgzPNAql4l//cgWx7IiMS4UWDKgyHwMvREw==", "0123456789", false, "7d6c316b-b562-42e3-b916-64a2e688f205", false, "admin" },
+                    { "2", 0, "Hanoi", "0386dbc9-3732-4f3e-95fb-b07128fa9294", "user@gmail.com", false, false, null, "User", "USER@GMAIL.COM", "USER", "AQAAAAEAACcQAAAAELewj106+us1sE0pW1HjYesK83D0dqoye8hJiP3SJ/303VfbBONtYcUCqXs+7l76hA==", "0123456789", false, "71d64a7f-9828-4e84-92be-90e8082c37d6", false, "user" },
+                    { "3", 0, "Hanoi", "2c30d859-a193-47c7-a95d-0555b2c6c9ba", "shop@gmail.com", false, false, null, "Shop", "SHOP@GMAIL.COM", "SHOP", "AQAAAAEAACcQAAAAEInXi18vn9szkXgXdICyHzu1VQ3pAaR9qwmDwVetZRUw9r1/A6uht17XrUQSW5u0Fw==", "0123456789", false, "e791e9d2-3c27-469f-99b8-25060af18816", false, "shop" },
+                    { "4", 0, "Hanoi", "fe0c8036-65b7-460f-bfc8-71f4de31cf8e", "user1@gmail.com", false, false, null, "User1", "USER1@GMAIL.COM", "USER1", null, "0123456789", false, "5e1c7628-8528-46a4-8a1e-88267c6f6ef0", false, "user1" },
+                    { "5", 0, "Hanoi", "55e41889-8273-487a-8dd2-c06d0cbcd984", "shop1@gmail.com", false, false, null, "Shop1", "SHOP1@GMAIL.COM", "SHOP1", null, "0123456789", false, "0e51c28d-017e-4d81-9fa3-51ea2b7a9235", false, "shop1" }
+                });
 
             migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "dd0e4dba-334e-42b3-8164-27c18d731e64", "2", "User", "User" });
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "1", "1" },
+                    { "2", "2" },
+                    { "3", "3" },
+                    { "2", "4" },
+                    { "3", "5" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -323,6 +375,16 @@ namespace soppi.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Orders_ProductId",
+                table: "Orders",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_UserId",
+                table: "Orders",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
@@ -354,6 +416,9 @@ namespace soppi.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Reviews");

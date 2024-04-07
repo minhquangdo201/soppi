@@ -5,7 +5,9 @@ using soppi.Models.ViewModel;
 namespace soppi.Interfaces {
     public interface IOrderService {
         Task<IActionResult> CreateOrder(OrderViewModel orderViewModel);
-        Task<List<Order>> GetAllOrdersByUser(string userId);
-        Task<List<Order>> GetAllOrdersByShop(string shopId);
+        Task<List<Order>> GetAllOrdersByUser();
+        Task<List<Order>> GetAllOrdersByShop();
+        Task<IActionResult> DeleteOrder(Guid id);
+        Task<IActionResult> ChangeStatus(OrderStatusViewModel orderStatusViewModel);
     }
 }

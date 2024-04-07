@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using soppi.Interfaces;
 using soppi.Models;
@@ -5,20 +7,23 @@ using soppi.Models;
 namespace soppi.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
 
-        public CategoryController(ICategoryService categoryService)
+        private readonly INotyfService _notyf;
+        public CategoryController(ICategoryService categoryService, INotyfService notyf)
         {
             _categoryService = categoryService;
+            _notyf = notyf;
         }
+
         public async Task<IActionResult> Index()
         {
             var categories = await _categoryService.GetAll();
-
-            return View(categories);
+            ViewBag.Categories = categories;
+            return View();
         }
 
         [HttpGet]
@@ -31,6 +36,19 @@ namespace soppi.Areas.Admin.Controllers
         public async Task<IActionResult> Add(Category category)
         {
             var rs = await _categoryService.CreateCategory(category);
+            if(rs is OkResult)
+            {
+                _notyf.Success("Thêm danh mục thành công!");
+                return RedirectToAction("Index", "Category", new { area = "Admin" });
+            }
+            _notyf.Error("Tên danh mục đã tồn tại!");
+            return RedirectToAction("Index", "Category");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var rs = await _categoryService.DeleteCategory(id);
             if(rs is OkResult)
             {
                 return RedirectToAction("Index", "Category", new { area = "Admin" });

@@ -6,7 +6,17 @@
     <link rel="stylesheet" href="~/Content/css/Home/Index.css">
 </head>
 <div>
-    <div class="row mx-xl-5 my-3">
+    <div class="d-flex justify-content-end mt-4 me-xl-5">
+        <form method="post" asp-action="Index" asp-controller="Home" class="d-flex col-lg-2 col-4">
+            <input class="form-control me-2" name="searchString" type="search" placeholder="Tìm kiếm" aria-label="Search" id="searchInput">
+        </form>
+    </div>
+    @if(ViewBag.Products.Count == 0){
+        <div>
+            <h4 class="text-center mt-3">Không tìm thấy sản phẩm nào</h4>
+        </div>
+    } else {
+        <div class="row mx-xl-5 my-3">
         @foreach (soppi.Models.ViewModel.ProductViewModel p in ViewBag.Products)
         {
             <div class="col-lg-2 col-md-4 col-6 my-1 rounded-3">
@@ -27,6 +37,7 @@
             </div>
         }
     </div>
+    }
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -43,3 +54,4 @@
         });
     });
 </script>
+

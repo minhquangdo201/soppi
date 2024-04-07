@@ -58,10 +58,19 @@ public class CategoryService : ICategoryService
                 return new BadRequestResult();
             }
         }
-        var len = await _context.Categories.CountAsync();
-        var id = len + 1;
-        category.Id = id;
         await _context.Categories.AddAsync(category);
+        await _context.SaveChangesAsync();
+        return new OkResult();
+    }
+
+    public async Task<IActionResult> DeleteCategory(int id)
+    {
+        var category = await _context.Categories.FindAsync(id);
+        if (category == null)
+        {
+            return null;
+        }
+        _context.Categories.Remove(category);
         await _context.SaveChangesAsync();
         return new OkResult();
     }

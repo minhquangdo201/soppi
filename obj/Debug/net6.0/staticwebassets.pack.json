@@ -17,8 +17,16 @@
       "PackagePath": "staticwebassets/Content/css/Home/Index.css"
     },
     {
+      "Id": "/Users/minh/Desktop/Final/soppi/wwwroot/Content/css/Order/Index.css",
+      "PackagePath": "staticwebassets/Content/css/Order/Index.css"
+    },
+    {
       "Id": "/Users/minh/Desktop/Final/soppi/wwwroot/Content/css/Product/Detail.css",
       "PackagePath": "staticwebassets/Content/css/Product/Detail.css"
+    },
+    {
+      "Id": "/Users/minh/Desktop/Final/soppi/wwwroot/Content/css/Shop/Order/Index.css",
+      "PackagePath": "staticwebassets/Content/css/Shop/Order/Index.css"
     },
     {
       "Id": "/Users/minh/Desktop/Final/soppi/wwwroot/Content/css/Shop/Product/Index.css",

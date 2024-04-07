@@ -1,14 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using soppi.Models.ViewModel;
 using soppi.Interfaces;
+using AspNetCoreHero.ToastNotification.Abstractions;
 
 public class ProductController : Controller {
     private readonly IProductService _productService;
     private readonly ICategoryService _categoryService;
+    private readonly INotyfService _notyf;
 
-    public ProductController(IProductService productService, ICategoryService categoryService) {
+    public ProductController(IProductService productService, ICategoryService categoryService, INotyfService notyf) {
         _productService = productService;
         _categoryService = categoryService;
+        _notyf = notyf;
     }
 
     public async Task<IActionResult> Index() {

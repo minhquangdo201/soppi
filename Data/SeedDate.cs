@@ -69,7 +69,8 @@ namespace soppi.Data
                     Price = 100000,
                     Image = "https://file3.qdnd.vn/data/images/0/2022/11/14/vietcuong/1-%201.jpg?dpi=150&quality=100&w=870",
                     Category = context.Categories.Find(2),
-                    StockQuantity = 100
+                    StockQuantity = 100,
+                    User = context.Users.Find("3")
                 },
                 new Product
                 {
@@ -79,7 +80,8 @@ namespace soppi.Data
                     Price = 200000,
                     Image = "https://www.sport9.vn/images/thumbs/002/0021481_bo-quan-ao-bong-da-doi-tuyen-quoc-gia-duc-mau-xam.jpeg?preset=large&watermark=default",
                     Category = context.Categories.Find(2),
-                    StockQuantity = 100
+                    StockQuantity = 100,
+                    User = context.Users.Find("3")
                 },
                 new Product
                 {
@@ -89,7 +91,8 @@ namespace soppi.Data
                     Price = 150000,
                     Image = "https://cf.shopee.vn/file/ce3abaf6fd09b578fd1bcd3f023d0bd5",
                     Category = context.Categories.Find(2),
-                    StockQuantity = 100
+                    StockQuantity = 100,
+                    User = context.Users.Find("3")
                 },
                 new Product
                 {
@@ -99,7 +102,8 @@ namespace soppi.Data
                     Price = 300000,
                     Image = "https://pos.nvncdn.com/b0b717-26181/ps/20200703_FGNYnIKW9iFUVfhsWMkgyBPz.jpg",
                     Category = context.Categories.Find(6),
-                    StockQuantity = 100
+                    StockQuantity = 100,
+                    User = context.Users.Find("3")
                 },
                 new Product
                 {
@@ -109,7 +113,8 @@ namespace soppi.Data
                     Price = 400000,
                     Image = "https://salt.tikicdn.com/cache/w1200/ts/product/65/3d/f7/a1ef28544ed76d91ecd1e4ee1826310d.jpg",
                     Category = context.Categories.Find(3),
-                    StockQuantity = 100
+                    StockQuantity = 100,
+                    User = context.Users.Find("5")
                 },
                 new Product
                 {
@@ -119,7 +124,8 @@ namespace soppi.Data
                     Price = 500000,
                     Image = "https://www.mykingdom.com.vn/cdn/shop/files/e5444fd0985d2e00f7950fcc39f8e437.jpg?v=1706855111",
                     Category = context.Categories.Find(1),
-                    StockQuantity = 100
+                    StockQuantity = 100,
+                    User = context.Users.Find("3")
                 },
                 new Product
                 {
@@ -129,7 +135,8 @@ namespace soppi.Data
                     Price = 600000,
                     Image = "https://bizweb.dktcdn.net/thumb/grande/100/425/687/products/choi-lau-nha-kangaroo-kg35sm-500x500.jpg?v=1698998460753",
                     Category = context.Categories.Find(4),
-                    StockQuantity = 100
+                    StockQuantity = 100,
+                    User = context.Users.Find("4")
                 },
                 new Product
                 {
@@ -139,7 +146,8 @@ namespace soppi.Data
                     Price = 20000000,
                     Image = "https://mtstore.vn/wp-content/uploads/2016/03/220908113533-iphone-14-pro-256gb2.jpg",
                     Category = context.Categories.Find(5),
-                    StockQuantity = 100
+                    StockQuantity = 100,
+                    User = context.Users.Find("5")
                 },
                 new Product
                 {
@@ -149,7 +157,8 @@ namespace soppi.Data
                     Price = 250000,
                     Image = "https://hvshop.vn/wp-content/uploads/2022/12/ong-cau-long-thanh-cong.jpg",
                     Category = context.Categories.Find(6),
-                    StockQuantity = 100
+                    StockQuantity = 100,
+                    User = context.Users.Find("5")
                 }
             );
             context.SaveChanges();

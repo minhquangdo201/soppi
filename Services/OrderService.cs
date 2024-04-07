@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using soppi.Data;
 using soppi.Interfaces;
 using soppi.Models;
@@ -11,11 +12,13 @@ namespace soppi.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public OrderService(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public OrderService(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _context = context;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
         public async Task<IActionResult> CreateOrder(OrderViewModel o)
         {
@@ -25,6 +28,9 @@ namespace soppi.Services
                 var product = await _context.Products.FindAsync(o.ProductId);
                 if (user == null || product == null)
                 {
+                    return null;
+                }
+                if(o.Quantity == 0){
                     return null;
                 }
                 var order = new Order
@@ -37,6 +43,7 @@ namespace soppi.Services
                     TotalPrice = product.Price * o.Quantity,
                     Status = "Pending"
                 };
+                product.StockQuantity = product.StockQuantity - o.Quantity;
                 await _context.Orders.AddAsync(order);
                 await _context.SaveChangesAsync();
                 return new OkResult();
@@ -48,14 +55,51 @@ namespace soppi.Services
             }
         }
 
-        public Task<List<Order>> GetAllOrdersByShop(string shopId)
+        public async Task<List<Order>> GetAllOrdersByShop()
         {
-            throw new NotImplementedException();
+            var shopId =  _userManager.GetUserId(_signInManager.Context.User);
+            var orders = await _context.Orders.Include(o => o.Product).Include(o => o.User).Where(o => o.Product.User.Id == shopId).ToListAsync();
+            if (orders == null)
+            {
+                return null;
+            }
+            return orders;
         }
 
-        public Task<List<Order>> GetAllOrdersByUser(string userId)
+        public async Task<List<Order>> GetAllOrdersByUser()
         {
-            throw new NotImplementedException();
+            var userId = _userManager.GetUserId(_signInManager.Context.User);
+            var orders = await _context.Orders.Include(o => o.Product).Include(o => o.Product.User).Where(o => o.User.Id == userId).ToListAsync();
+            if (orders == null)
+            {
+                return null;
+            }
+            return orders;
+        }
+
+        public async Task<IActionResult> DeleteOrder(Guid id)
+        {
+            var order = await _context.Orders.Include(o => o.Product).FirstOrDefaultAsync(o => o.Id == id);
+            if (order == null)
+            {
+                return null;
+            }
+            order.Product.StockQuantity = order.Product.StockQuantity + order.Quantity;
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
+            return new OkResult();
+        }
+
+        public async Task<IActionResult> ChangeStatus(OrderStatusViewModel o)
+        {
+            var order = await _context.Orders.FindAsync(o.Id);
+            if (order == null)
+            {
+                return null;
+            }
+            order.Status = o.Status;
+            await _context.SaveChangesAsync();
+            return new OkResult();
         }
     }
 }

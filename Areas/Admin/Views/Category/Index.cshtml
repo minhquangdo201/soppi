@@ -1,20 +1,73 @@
-@model List<soppi.Models.Category>;
+@model soppi.Models.Category;
 
-<a class="btn btn-primary" asp-area="Admin" asp-action="Add" asp-controller="Category">Thêm danh mục</a>
-<table class="table">
-    <tr>
-        <th>Id</th>
-        <th>Tên danh mục</th>
-        <th>Thao tác</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.CategoryName</td>
-            <td>
-                <button class="btn btn-warning" asp-area="Admin" asp-controller="Category" asp-action="Detail">Chi tiết</button>
-            </td>
-        </tr>
-    }
-</table>
+<form class="row mt-3 justify-content-end" method="post">
+    <div class="col-3 d-flex">
+        <input class="form-control" type="text" asp-for="@Model.CategoryName" placeholder="Tên danh mục">
+        <button type="submit" class="btn btn-primary mx-2" asp-action="Add" asp-controller="Category">Thêm</button>
+    </div>
+</form>
+</div>
+<div class="row justify-content-center">
+    <div class="col-8">
+        <table class="table table-bordered table-hover bg-white shadow">
+            <tr>
+                <th class="text-center">Tên danh mục</th>
+                <th class="text-center">Thao tác</th>
+            </tr>
+            @foreach (var item in ViewBag.Categories)
+            {
+                <tr>
+                    <td class="text-center">@item.CategoryName</td>
+                    <td class="text-center">
+                        <div>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" data-category-id="@item.Id">
+                                Xóa
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Xác nhận xóa danh mục</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn có chắc chắn muốn xóa danh mục này không?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form asp-action="Delete" asp-controller="Category" id="confirmForm">
+                                                <input type="hidden" id="categoryInput" name="id">
+                                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                            </form>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Đóng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Lắng nghe sự kiện click trên nút mở modal
+        $('[data-bs-toggle="modal"]').click(function () {
+            // Lấy giá trị orderId từ thuộc tính data
+            var categoryId = $(this).data('category-id');
+            $('#categoryInput').val(categoryId);
+        });
+
+        // Đoạn mã JS khác nếu cần
+    });
+</script>

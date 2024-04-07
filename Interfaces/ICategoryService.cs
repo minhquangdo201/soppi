@@ -10,4 +10,6 @@ public interface ICategoryService {
     Task<List<ProductViewModel>> GetProductsByCategory(int id);
 
     Task<IActionResult> CreateCategory(Category category);
+
+    Task<IActionResult> DeleteCategory(int id);
 }

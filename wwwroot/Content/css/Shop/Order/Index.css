@@ -1,0 +1,26 @@
+
+.outer-img {
+    width: 300px; /* Định kích thước cố định cho ảnh */
+    height: 200px; /* Định kích thước cố định cho ảnh */
+    overflow: hidden; /* Đảm bảo ảnh không vượt ra khỏi phần tử cha */
+}
+
+.outer-img img {
+    width: 100%; /* Ảnh sẽ lấp đầy phần tử cha */
+    height: 100%; /* Ảnh sẽ lấp đầy phần tử cha */
+    object-fit: cover; /* Đảm bảo tỷ lệ khung hình giống nhau */
+}
+
+.product-info,
+.user-info {
+    margin-left: 10px; /* Khoảng cách giữa ảnh và thông tin */
+}
+
+.status {
+    margin-top: 10px; /* Khoảng cách giữa thông tin và trạng thái */
+}
+
+.price {
+    color: #ff6464;
+    font-weight: 600;
+}

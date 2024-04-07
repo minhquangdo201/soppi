@@ -32,8 +32,15 @@ namespace soppi.Controllers {
         }
 
         [HttpGet]
-        public async Task<IActionResult> CategoryProducts(int id){
+        public async Task<IActionResult> CategoryProducts(int id, string searchStr) {
             var products = await _categoryService.GetProductsByCategory(id);
+            if(string.IsNullOrEmpty(searchStr)) {
+                return View(products);
+            }
+            if (!string.IsNullOrEmpty(searchStr)) {
+                products = products.Where(p => p.ProductName.IndexOf(searchStr, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            }
+
             return View(products);
         }
     }
