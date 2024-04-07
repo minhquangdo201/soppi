@@ -1,1 +1,35 @@
-<div>Shop</div>
+@{
+    var pCount = ViewBag.ProductCount;
+    var oCount = ViewBag.OrderCount;
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/css/Shop/Home/Index.css">
+</head>
+<div class="container-fluid">
+    <div class="row mt-5 justify-content-around">
+        <a class="col-5 outer" style="background-color: #FEA884;" asp-action="Index" asp-controller="Product">
+            <div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <div class="text-white text fw-bold">Sản phẩm</div>
+                        <div class="text-white count fw-bold">@pCount</div>
+                    </div>
+                    <div><i class="bi bi-bag-fill" style="color: white;"></i></div>
+                </div>
+
+            </div>
+        </a>
+        <a class="col-5 outer" style="background-color: #05D78F;" asp-action="Index" asp-controller="Order">
+            <div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <div class="text-white text fw-bold">Đơn hàng</div>
+                        <div class="text-white count fw-bold"> @oCount</div>
+                    </div>
+                    <div><i class="bi bi-cart-fill" style="color: white" ;></i></div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

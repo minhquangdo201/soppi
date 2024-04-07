@@ -9,5 +9,7 @@ namespace soppi.Interfaces {
         Task<List<Order>> GetAllOrdersByShop();
         Task<IActionResult> DeleteOrder(Guid id);
         Task<IActionResult> ChangeStatus(OrderStatusViewModel orderStatusViewModel);
+        Task<Order> GetOrderById(Guid id);
+        Task<IActionResult> UpdateOrderStatus(Guid id, string status);
     }
 }

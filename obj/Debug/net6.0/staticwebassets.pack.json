@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets/Content/css/Product/Detail.css"
     },
     {
+      "Id": "/Users/minh/Desktop/Final/soppi/wwwroot/Content/css/Shop/Home/Index.css",
+      "PackagePath": "staticwebassets/Content/css/Shop/Home/Index.css"
+    },
+    {
       "Id": "/Users/minh/Desktop/Final/soppi/wwwroot/Content/css/Shop/Order/Index.css",
       "PackagePath": "staticwebassets/Content/css/Shop/Order/Index.css"
     },

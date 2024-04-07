@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "B6Uzb3koui1K/f6L7lG/rQ3b+hUf9x6KTOknkh25RSo=",
+  "Hash": "VnryxyE3WpqAu8DG50FLs3IGJ+ijZmdJc0NBLU+i4+s=",
   "Source": "soppi",
   "BasePath": "_content/soppi",
   "Mode": "Default",
@@ -1364,6 +1364,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Content/css/Product/Detail.css"
+    },
+    {
+      "Identity": "/Users/minh/Desktop/Final/soppi/wwwroot/Content/css/Shop/Home/Index.css",
+      "SourceId": "soppi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/minh/Desktop/Final/soppi/wwwroot/",
+      "BasePath": "_content/soppi",
+      "RelativePath": "Content/css/Shop/Home/Index.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Content/css/Shop/Home/Index.css"
     },
     {
       "Identity": "/Users/minh/Desktop/Final/soppi/wwwroot/Content/css/Shop/Order/Index.css",

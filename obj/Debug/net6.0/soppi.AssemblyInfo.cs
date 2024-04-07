@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("soppi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5296807c013b351ace6fa1f5da847c1c490b06e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2fa5fc335a99c7a82ae7f597dc41edd215bf666")]
 [assembly: System.Reflection.AssemblyProductAttribute("soppi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("soppi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

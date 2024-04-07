@@ -1,4 +1,11 @@
+.outer {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
 
+.outer:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
 .outer-img {
     width: 300px; /* Định kích thước cố định cho ảnh */
     height: 200px; /* Định kích thước cố định cho ảnh */

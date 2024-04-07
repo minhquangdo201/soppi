@@ -1,0 +1,35 @@
+.outer {
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 200px;
+}
+
+.outer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+a {
+    text-decoration: none;
+}
+
+.outer .bi {
+    font-size: 40px;
+}
+.text{
+    font-size: 40px;
+}
+.count{
+    font-size: 28px;
+}
+
+@media screen and (max-width: 768px){
+    .text{
+        font-size: 20px;
+    }
+    .count{
+        font-size: 16px;
+    }
+}

@@ -101,5 +101,28 @@ namespace soppi.Services
             await _context.SaveChangesAsync();
             return new OkResult();
         }
+
+        public async Task<Order> GetOrderById(Guid id)
+        {
+            var order =  await _context.Orders.Include(o => o.Product).Include(o => o.User).FirstOrDefaultAsync(o => o.Id == id);
+            if (order == null)
+            {
+                return null;
+            }
+            return order;
+        }
+
+
+
+        public async Task<IActionResult> UpdateOrderStatus(Guid id, string status){
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return null;
+            }
+            order.Status = status;
+            await _context.SaveChangesAsync();
+            return new OkResult();
+        }
     }
 }

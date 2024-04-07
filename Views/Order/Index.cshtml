@@ -24,8 +24,21 @@
                             <div class="order-info">
                                 <div><strong>@o.Product.ProductName</strong></div>
                                 <div>Số lượng: @o.Quantity</div>
-                                <div class="total-price" data-price="@o.TotalPrice">Thành tiền: @o.TotalPrice</div>
-                                <div>Trạng thái: @o.Status</div>
+                                <div class="fw-bold total-price" data-price="@o.TotalPrice" style="color: #ff6464;">Thành tiền:
+                                    @o.TotalPrice</div>
+                                <div>Trạng thái: @if (@o.Status == "Pending")
+                                    {
+                                        <span>Chờ xác nhận</span>
+                                    }
+                                    else if (@o.Status == "Shipping")
+                                    {
+                                        <span>Đang giao hàng</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Đã giao hàng</span>
+                                    }
+                                </div>
                             </div>
                             <div class="shop-info">
                                 <div>
