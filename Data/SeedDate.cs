@@ -159,7 +159,108 @@ namespace soppi.Data
                     Category = context.Categories.Find(6),
                     StockQuantity = 100,
                     User = context.Users.Find("5")
+                },
+                new Product
+                {
+                    Id = new Guid(),
+                    ProductName = "Bóng rổ",
+                    Description = "Bóng rổ",
+                    Price = 100000,
+                    Image = "https://contents.mediadecathlon.com/p2154428/8a29661a780b5f6bf01d2dd15efef451/p2154428.jpg",
+                    Category = context.Categories.Find(2),
+                    StockQuantity = 100,
+                    User = context.Users.Find("3")
+                },
+                new Product
+                {
+                    Id = new Guid(),
+                    ProductName = "Áo bóng rổ",
+                    Description = "Áo bóng rổ",
+                    Price = 200000,
+                    Image = "https://giaybongro.vn/upload/img/3612_1507404077.jpg",
+                    Category = context.Categories.Find(2),
+                    StockQuantity = 100,
+                    User = context.Users.Find("3")
+                },
+                new Product
+                {
+                    Id = new Guid(),
+                    ProductName = "Quần thể thao",
+                    Description = "Quần thể thao",
+                    Price = 150000,
+                    Image = "https://down-vn.img.susercontent.com/file/3ba824ff58a473fdf10abff053eeaa7d",
+                    Category = context.Categories.Find(2),
+                    StockQuantity = 100,
+                    User = context.Users.Find("3")
+                },
+                new Product
+                {
+                    Id = new Guid(),
+                    ProductName = "Giày bóng rổ",
+                    Description = "Giày bóng rổ",
+                    Price = 300000,
+                    Image = "https://neverstopshop.com/image/catalog/Nike-Jordan-37/Giay-bong-ro-Nike-Air-Jordan-37-Black-White-Red-co-cao-chuyen-indoor-outdoor-sfake-replica-1-1-chinh-hang-real-gia-re-HCM-NK2140-1.jpg",
+                    Category = context.Categories.Find(6),
+                    StockQuantity = 100,
+                    User = context.Users.Find("3")
+                },
+                new Product
+                {
+                    Id = new Guid(),
+                    ProductName = "Giày sneaker",
+                    Description = "Giày sneaker",
+                    Price = 400000,
+                    Image = "https://giaysneaker.com.vn/public/media/giay-sneaker-mlb-chunky-liner-ny-trang-got-xanh-den-3_result.jpg",
+                    Category = context.Categories.Find(3),
+                    StockQuantity = 100,
+                    User = context.Users.Find("5")
+                },
+                new Product
+                {
+                    Id = new Guid(),
+                    ProductName = "Bóng chuyền",
+                    Description = "Bóng chuyền",
+                    Price = 100000,
+                    Image = "https://thethaominhphu.com/wp-content/uploads/2018/04/Qua-bong-chuyen-Thang-Long-thi-dau-VB7700-600x600.jpg",
+                    Category = context.Categories.Find(2),
+                    StockQuantity = 1750,
+                    User = context.Users.Find("3")
+                },
+                new Product
+                {
+                    Id = new Guid(),
+                    ProductName = "Áo bóng chuyền",
+                    Description = "Áo bóng chuyền",
+                    Price = 200000,
+                    Image = "https://bulbal.vn/wp-content/uploads/2023/03/BO-QUAN-AO-BONG-CHUYEN-NU-BULBAL-AURA-TRANG-8-scaled.jpg",
+                    Category = context.Categories.Find(2),
+                    StockQuantity = 140,
+                    User = context.Users.Find("3")
+                },
+                new Product
+                {
+                    Id = new Guid(),
+                    ProductName = "Iphone 15 Pro",
+                    Description = "Iphone 15 Pro",
+                    Price = 20000000,
+                    Image = "https://cdn.hoanghamobile.com/i/preview/Uploads/2023/09/13/iphone-15-pro-white-titanium-pure-back-iphone-15-pro-white-titanium-pure-front-2up-screen-usen.png",
+                    Category = context.Categories.Find(5),
+                    StockQuantity = 100,
+                    User = context.Users.Find("5")
+                },
+                // tivi
+                new Product
+                {
+                    Id = new Guid(),
+                    ProductName = "Tivi Samsung 43 inch 43T6500",
+                    Description = "Tivi Samsung 43 inch 43T6500",
+                    Price = 20000000,
+                    Image = "https://cdn.mediamart.vn/images/product/smart-tivi-samsung-43-inch-43t6500-8SLPw5.png",
+                    Category = context.Categories.Find(5),
+                    StockQuantity = 100,
+                    User = context.Users.Find("5")
                 }
+
             );
             context.SaveChanges();
 
