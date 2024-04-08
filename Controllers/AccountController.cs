@@ -75,7 +75,8 @@ public class AccountController : Controller
         {
             var result = await _accountService.Register(model);
             if (result.Succeeded)
-            {
+            {   
+                _notyf.Success("Đăng ký thành công!", 4);
                 return RedirectToAction("SignIn", "Account");
             }
             ModelState.AddModelError(string.Empty, "Tên tài khoản đã tồn tại!");

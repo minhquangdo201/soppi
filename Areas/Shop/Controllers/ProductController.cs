@@ -46,8 +46,10 @@ namespace soppi.Areas.Shop.Controllers
             var rs = await _productService.AddProductToShop(product);
             if (rs != null)
             {
+                _notyf.Success("Thêm sản phẩm thành công!");
                 return RedirectToAction("Index", "Product", new { area = "Shop" });
             }
+            _notyf.Error("Thêm sản phẩm không thành công!");
             return RedirectToAction("Add", "Product");
         }
 

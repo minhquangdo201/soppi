@@ -28,15 +28,15 @@
                                     @o.TotalPrice</div>
                                 <div>Trạng thái: @if (@o.Status == "Pending")
                                     {
-                                        <span>Chờ xác nhận</span>
+                                        <span class="text-warning fw-bold">Chờ xác nhận</span>
                                     }
                                     else if (@o.Status == "Shipping")
                                     {
-                                        <span>Đang giao hàng</span>
+                                        <span class="text-info fw-bold">Đang giao hàng</span>
                                     }
                                     else
                                     {
-                                        <span>Đã giao hàng</span>
+                                        <span class="text-success fw-bold">Đã giao hàng</span>
                                     }
                                 </div>
                             </div>

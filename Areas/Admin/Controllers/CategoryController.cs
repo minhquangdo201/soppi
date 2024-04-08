@@ -50,9 +50,11 @@ namespace soppi.Areas.Admin.Controllers
         {
             var rs = await _categoryService.DeleteCategory(id);
             if(rs is OkResult)
-            {
+            {   
+                _notyf.Success("Xóa danh mục thành công!");
                 return RedirectToAction("Index", "Category", new { area = "Admin" });
             }
+            _notyf.Error("Xóa danh mục không thành công!");
             return new BadRequestResult();
         }
     }
