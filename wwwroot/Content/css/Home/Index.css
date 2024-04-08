@@ -4,12 +4,12 @@ body{
 .product-outer {
     background-color: white;
     height: 16rem;
-    transition: transform 0.3s, box-shadow 0.3s; 
+    transition: transform 0.3s, box-shadow 0.5s; 
 }
 
 .product-outer:hover {
     transform: translateY(-8px); /* Di chuyển sản phẩm lên trên */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Hiển thị bóng đổ */
+    box-shadow: 0px 0px 8px rgb(255, 100, 100); /* Hiển thị bóng đổ */
 }
 
 .product-image {
